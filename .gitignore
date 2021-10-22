@@ -1,0 +1,6 @@
+
+build/*
+.cache/*
+html/*
+latex/*
+compile_commands.json
