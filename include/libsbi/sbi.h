@@ -27,6 +27,11 @@ enum sbi_impl_id {
     DIOSIX
 };
 
+
+/*
+    Base extension SBI calls.
+
+ */
 struct sbiret sbi_ecall(int eid, int fid, uint64_t arg0, uint64_t arg1, uint64_t arg2, uint64_t arg3, uint64_t arg4, uint64_t arg5);
 
 struct sbiret sbi_get_spec_version();
@@ -43,6 +48,30 @@ struct sbiret get_marchid();
 
 struct sbiret get_get_mimpid();
 
+/*
+    Legacy SBI calls.
+
+ */
 void sbi_console_putchar(int ch) __attribute__((deprecated("This function is deprecated and there is no replacement. Refer the SBI spec."))); 
 
 int sbi_console_getchar() __attribute__((deprecated("This function is deprecated and there is no replacement. Refer the SBI spec.")));
+
+/*
+    
+    Hart management calls.
+
+ */
+enum hart_state {
+    STARTED,
+    STOPPED,
+    START_PENDING,
+    STOP_PENDING,
+    SUSPENDED,
+    SUSPEND_PENDING,
+    RESUME_PENDING
+};
+
+
+struct sbiret sbi_hart_start(uint64_t hartid, uint64_t start_addr, uint64_t opaque);
+
+struct sbiret sbi_hart_get_status(unsigned long hartid); 

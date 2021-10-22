@@ -1,6 +1,7 @@
 #pragma once
 
 #include <stdint.h>
+#include <stdatomic.h>
 
 typedef volatile uint8_t u8_reg;
 
