@@ -88,13 +88,10 @@ to_str(uint64_t)
 
 const char hex_prefix[2] = {'0', 'x'};
 
-static atomic_flag flag = ATOMIC_FLAG_INIT;
-
-static struct spinlock lock = NEW_SPINLOCK;
+static struct spinlock lock = SPINLOCK_INIT;
 
 void kprint(const char*fmt , ...)
 {
-    //while (atomic_flag_test_and_set(&flag)) {}
     sl_lock(&lock);
 
     va_list args;
@@ -176,7 +173,6 @@ void kprint(const char*fmt , ...)
         fmt++;
     }
 
-    //atomic_flag_clear(&flag);
     sl_release(&lock);
 }
 

@@ -32,7 +32,7 @@ set (COMPILER_FLAGS
 
     -std=gnu2x
 
-    # -O2
+    -O2
     )
 
 if (DEBUG)

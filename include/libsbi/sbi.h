@@ -52,9 +52,9 @@ struct sbiret get_get_mimpid();
     Legacy SBI calls.
 
  */
-void sbi_console_putchar(int ch) __attribute__((deprecated("This function is deprecated and there is no replacement. Refer the SBI spec."))); 
+[[deprecated("This function is deprecated and there is no replacement. Refer the SBI spec.")]] void sbi_console_putchar(int ch);
 
-int sbi_console_getchar() __attribute__((deprecated("This function is deprecated and there is no replacement. Refer the SBI spec.")));
+[[deprecated("This function is deprecated and there is no replacement. Refer the SBI spec.")]] int sbi_console_getchar();
 
 /*
     

@@ -10,7 +10,7 @@ struct spinlock {
 //!
 //! Create a new spinlock.
 //!
-#define NEW_SPINLOCK {              \
+#define SPINLOCK_INIT {             \
     .__flag = ATOMIC_FLAG_INIT      \
     }                               \
 

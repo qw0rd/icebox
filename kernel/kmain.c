@@ -34,7 +34,7 @@ struct boot_info early_kmain(uintptr_t dtb)
     kmain(info);
 }
 
-__attribute__((naked, noreturn)) void boot_hart()
+[[gnu::noreturn, gnu::naked]] void boot_hart()
 {
     asm(R"(
         mv a0, a0
@@ -92,22 +92,13 @@ void print_hart_status(uint64_t value, int id, int* boot_hart_id)
     }
 }
 
-// atomic_flag flag = ATOMIC_FLAG_INIT;
-
-__attribute__((noreturn)) void kmain(struct boot_info info)
+[[gnu::noreturn]] void kmain(struct boot_info info)
 {
     init_uart();
 
     kprint("Dtb at: %lx\n", info.dtb);
     kprint("Getting hart info...\n");
     int hart_count = 0;
-
-/*
-    atomic_flag_test_and_set(&flag);
-    while (atomic_flag_test_and_set(&flag)) {
-    }
-    */
-
 
     int b_hart_id;
     while (1) {
