@@ -18,7 +18,31 @@ enum sbi_error {
     SBI_ERR_ALREADY_STOPPED = -8,
 };
 
+enum sbi_impl_id {
+    BERKELEY_BOOT_LOADER = 0,
+    OPEN_SBI,
+    XVISOR,
+    KVM,
+    RUST_SBI,
+    DIOSIX
+};
+
 struct sbiret sbi_ecall(int eid, int fid, uint64_t arg0, uint64_t arg1, uint64_t arg2, uint64_t arg3, uint64_t arg4, uint64_t arg5);
 
-
 struct sbiret sbi_get_spec_version();
+
+struct sbiret sbi_get_sbi_impl_id();
+
+struct sbiret sbi_get_sbi_impl_version();
+
+struct sbiret sbi_probe_extension();
+
+struct sbiret get_mvendorid();
+
+struct sbiret get_marchid();
+
+struct sbiret get_get_mimpid();
+
+void sbi_console_putchar(int ch) __attribute__((deprecated("This function is deprecated and there is no replacement. Refer the SBI spec."))); 
+
+int sbi_console_getchar() __attribute__((deprecated("This function is deprecated and there is no replacement. Refer the SBI spec.")));

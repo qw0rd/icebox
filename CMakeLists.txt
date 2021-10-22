@@ -22,6 +22,8 @@ set (COMPILER_FLAGS
     -Wextra
     -pedantic
 
+    # -Werror
+
     -mcmodel=medany
 
     -ffreestanding

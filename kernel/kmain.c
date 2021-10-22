@@ -35,7 +35,7 @@ struct boot_info early_kmain(uintptr_t dtb)
 
 }
 
-[[gnu::noreturn]] void kmain(struct boot_info info)
+__attribute__((noreturn)) void kmain(struct boot_info info)
 {
     init_uart();
 
@@ -61,6 +61,13 @@ struct boot_info early_kmain(uintptr_t dtb)
     int minor = val & 0xffffff;
 
     kprint("SBI version: %d.%d\n", major, minor);
+    struct sbiret id = sbi_get_sbi_impl_id();
+
+    switch (id.value) {
+        case OPEN_SBI:
+            kprint("SBI Impl: OpenSBI");
+            break;
+    }
 
     while (1) {
         asm("li t0, 0xdeadbeef");

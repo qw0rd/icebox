@@ -37,7 +37,7 @@ typedef struct ns16550 ns16550;
 
 void uart_write_u8(uint8_t data);
 
-[[gnu::nodiscard]] uint8_t uart_read_u8();
+[[nodiscard]] uint8_t uart_read_u8();
 
 
 void init_uart();
