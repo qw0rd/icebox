@@ -24,13 +24,16 @@ set (COMPILER_FLAGS
 
     # -Werror
 
+    -march=rv64imad
+
     -mcmodel=medany
 
     -ffreestanding
 
     -std=gnu2x
 
-    -O2)
+    # -O2
+    )
 
 if (DEBUG)
     set(COMPILER_FLAGS ${COMPILER_FLAGS} -g)

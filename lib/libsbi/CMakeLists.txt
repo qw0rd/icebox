@@ -1,6 +1,7 @@
 
 
 set (FILES
+    hart.c
     legacy.c
     base.c
     sbi.c)

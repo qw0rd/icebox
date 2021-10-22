@@ -6,6 +6,7 @@
 
 #include <stdint.h>
 #include <icebox/drivers/uart.h>
+#include <stdbool.h>
 
 #define _UART_ADDR 0x10000000
 
